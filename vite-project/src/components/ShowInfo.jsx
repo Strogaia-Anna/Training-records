@@ -13,7 +13,11 @@ export const ShowInfo = (props) => {
                 <div className={s.title_item}>Действия</div>
             </div>
             <div className={s.container}>
-                {props.data.map((item) => (
+                {props.data.sort((a, b) => {
+                    if (new Date(a.date) < new Date(b.date)) return 1;
+                    if (new Date(a.date) == new Date(b.date)) return 0;
+                    if (new Date(a.date) > new Date(b.date)) return -1;
+                }).map((item) => (
                     <div className={s.container_row}>
                         <div className={s.row_item}>
                             {item.date}
